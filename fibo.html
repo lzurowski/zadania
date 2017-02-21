@@ -1,0 +1,38 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Funkcja Fibo rekurencyjnie</title>
+</head>
+
+<body>
+       <script>
+
+            var arrFib = {};
+            var countR = 0;
+            function fibo(n){
+                countR++;
+                if (0 == n){                     
+                    arrFib[n] = 0;
+                    return 0;
+                }
+                if (1 == n){
+                     arrFib[n] = 1;
+                     return 1;
+                }
+                
+                //return fibo(n-2) + fibo(n-1);
+                if(arrFib.hasOwnProperty(n)){
+                    return arrFib[n];
+                }else{                
+                    arrFib[n] = fibo(n-2) + fibo(n-1);
+                    return arrFib[n];
+                }
+            }
+
+            console.log(fibo(0), fibo(1), fibo(3),fibo(4), fibo(5),fibo(6), fibo(7), fibo(8), fibo(9),fibo(10),fibo(11),fibo(12),fibo(13),fibo(14),fibo(15), "wywolania:="+countR);
+
+
+       </script>
+    </body>
+</html>

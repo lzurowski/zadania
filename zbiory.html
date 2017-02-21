@@ -1,0 +1,103 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Funkcja Fibo rekurencyjnie</title>
+</head>
+
+<body>
+       <script>
+
+            var arr1 = [1,2,3,4,5,6,7,8];
+            var arr2 = [3,5,6,8,9,10,23,45,67];
+
+
+            function merge(arr1, arr2){
+                var i1= 0, i2 =0;
+                var arr = [];
+                var iter = arr1.length + arr2.length;
+                
+                for(var i=0; i<iter; i++){
+                    if(arr1[i1] <= arr2[i2] ){
+                        arr.push(arr1[i1]);
+                        i1++;
+                    }else{
+                        arr.push(arr2[i2]);
+                        i2++;
+                    }
+                }
+                return arr;
+            }
+
+            console.log(arr1, arr2, merge(arr1,arr2) );
+
+            //obiekty typu Car
+            function Car(){
+
+                this.weight = 0;
+                this.power = 0;
+                this.topSpeed = 0;
+                this.color = "";
+                this.numberOfWheels = 4;
+                this.wheels = [];
+
+                this.changeWheels = function(arrWheels){
+
+                };
+
+
+                this.changeWheel = function(index, wheel){
+
+                };
+
+                this.pain = function(color){
+
+                };
+
+                this.toString = function(){
+                    return  "weight: "+this.weight+" power: "+this.power+"; top speed: "+this.topSpeed+"; color: "+this.color+"; number of wheels: "+this.numberOfWheels;
+                }
+
+            };
+
+             var Factory = {
+                 types : {car:"Car", motorbike:"Motorbike"}, 
+                 getObject : function (type){
+                     if(Factory.types.car === type){
+                         //return eval("new " + Factory.types.car+"()");
+                         //or
+                         return new window[Factory.types.car]();
+                     }
+                     if(Factory.types.motorbike === type){
+                         //return eval("new " + Factory.types.motorbike+"()");
+                         //or
+                         return new window[Factory.types.motorbike]();
+                     }
+                 }
+
+             };   
+
+
+            var c = Factory.getObject(Factory.types.car);
+            console.log(c, c.toString());
+
+            /*
+            var p = new Person()
+            Is equivalent to:
+
+            var p = new window.Person()
+            So you can use the square bracket notation:
+
+            var p = new window["Person"]();
+            Of course this is valid for every kind of object. If you don't want pollute the global scope, you can have:
+
+            var mynamespace = {};
+
+            mynamespace.Person = function Person() {..}
+
+            var p = new mynamespace["Person"]();
+            */
+
+       </script>
+    </body>
+</html>
